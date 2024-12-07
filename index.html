@@ -15,19 +15,6 @@
         h1, h2, h3 {
             color: #0056b3;
         }
-        .code {
-            background: #eaeaea;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        .output {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -36,18 +23,21 @@
         table th, table td {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: left;
+            text-align: center;
         }
         table th {
             background-color: #f2f2f2;
         }
-        pre {
-            background: #eaeaea;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -58,49 +48,125 @@
     <section>
         <h2>Resultados y conclusiones</h2>
         <p>En los resultados se muestra que tenemos un total de 93 tabletas pero con distintas marcas:</p>
-        <ul>
-            <li><strong>Marca Samsung:</strong> 88</li>
-            <li><strong>Samsung:</strong> 3</li>
-            <li><strong>Artist Unknown:</strong> 1</li>
-            <li><strong>F-Tech:</strong> 1</li>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Samsung</td>
+                    <td>88</td>
+                </tr>
+                <tr>
+                    <td>Samsung (otros modelos)</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Artist Unknown</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>F-Tech</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Gráfico de distribución de marcas</h2>
+        <div class="chart-container">
+            <canvas id="brandChart"></canvas>
+        </div>
     </section>
 
     <section>
         <h2>Preguntas y respuestas</h2>
         <h3>¿Cuál es el rango de precios del reproductor MP3 seleccionado en Mercado Libre?</h3>
-        <p><strong>El menor precio es:</strong> 720.000</p>
-        <p><strong>El mayor precio es:</strong> 5.999.999</p>
+        <p><strong>El menor precio es:</strong> 5.999.999</p>
 
         <h3>¿Qué características técnicas son las más destacadas en los productos ofrecidos?</h3>
         <p><strong>Tableta de menor precio:</strong></p>
-        <div class="output">
-            Tableta SAMSUNG Galaxy Tab S6 Lite WiFi 10.4" - 64 GB, Compatible con S Pen, Pantalla Cristalina, Diseño Delgado, Almacenamiento Expandible - Color Gris Oscuro. <br>
-            Descubre la Samsung Galaxy Tab S6 Lite, una tableta Android versátil y poderosa...
-        </div>
+        <ul>
+            <li>Tableta SAMSUNG Galaxy Tab S6 Lite WiFi 10.4"</li>
+            <li>Almacenamiento: 64 GB</li>
+            <li>Compatible con S Pen</li>
+        </ul>
 
         <p><strong>Tableta de mayor precio:</strong></p>
-        <div class="output">
-            Marca Samsung Línea Galaxy Tab Modelo S6 Versión Lite Modelo alfanumérico SM-P619NZAVZTO Memoria Capacidad 256 GB...
-        </div>
+        <ul>
+            <li>Marca Samsung Línea Galaxy Tab Modelo S6</li>
+            <li>Memoria: 256 GB</li>
+            <li>Pantalla: 10.5"</li>
+        </ul>
     </section>
 
     <section>
         <h2>Opiniones de los usuarios</h2>
-        <p><strong>Opiniones:</strong> 4.9 de 5 (123 opiniones).</p>
-        <ul>
-            <li><strong>Relación precio-calidad:</strong> 4.7 de 5</li>
-            <li><strong>Calidad de la pantalla:</strong> 4.6 de 5</li>
-            <li><strong>Velocidad al usarlo:</strong> 4.5 de 5</li>
-            <li><strong>Duración de la batería:</strong> 4.5 de 5</li>
-            <li><strong>Calidad de la cámara:</strong> 4 de 5</li>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Calificación (sobre 5)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Relación precio-calidad</td>
+                    <td>4.7</td>
+                </tr>
+                <tr>
+                    <td>Calidad de la pantalla</td>
+                    <td>4.6</td>
+                </tr>
+                <tr>
+                    <td>Velocidad al usarlo</td>
+                    <td>4.5</td>
+                </tr>
+                <tr>
+                    <td>Duración de la batería</td>
+                    <td>4.5</td>
+                </tr>
+                <tr>
+                    <td>Calidad de la cámara</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
     <footer>
         <p>Creado por: Juan Carlos Gutierrez</p>
         <p>Fecha: 2024</p>
     </footer>
+
+    <script>
+        // gráfico de marcas
+        const ctx = document.getElementById('brandChart').getContext('2d');
+        const brandChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Samsung', 'Samsung (otros)', 'Artist Unknown', 'F-Tech'],
+                datasets: [{
+                    label: 'Cantidad',
+                    data: [88, 3, 1, 1],
+                    backgroundColor: ['#4CAF50', '#FFC107', '#2196F3', '#FF5722']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
+
 
