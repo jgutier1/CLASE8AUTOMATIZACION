@@ -8,12 +8,12 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             color: #333;
             padding: 20px;
         }
         h1, h2, h3 {
-            color: #0056b3;
+            color: #2c3e50;
         }
         table {
             width: 100%;
@@ -22,19 +22,21 @@
         }
         table th, table td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
             text-align: center;
         }
         table th {
-            background-color: #f2f2f2;
+            background-color: #f0f0f0;
         }
         .chart-container {
             width: 80%;
-            margin: 20px auto;
+            margin: 30px auto;
         }
         footer {
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: center;
+            font-size: 0.9em;
+            color: #555;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -42,7 +44,7 @@
 <body>
     <header>
         <h1>Evidencia de Aprendizaje - Optimización</h1>
-        <p>Este documento presenta los resultados y conclusiones del análisis realizado con Python.</p>
+        <p>Este documento presenta los resultados y conclusiones del análisis realizado.</p>
     </header>
 
     <section>
@@ -84,28 +86,8 @@
     </section>
 
     <section>
-        <h2>Preguntas y respuestas</h2>
-        <h3>¿Cuál es el rango de precios del reproductor MP3 seleccionado en Mercado Libre?</h3>
-        <p><strong>El menor precio es:</strong> 5.999.999</p>
-
-        <h3>¿Qué características técnicas son las más destacadas en los productos ofrecidos?</h3>
-        <p><strong>Tableta de menor precio:</strong></p>
-        <ul>
-            <li>Tableta SAMSUNG Galaxy Tab S6 Lite WiFi 10.4"</li>
-            <li>Almacenamiento: 64 GB</li>
-            <li>Compatible con S Pen</li>
-        </ul>
-
-        <p><strong>Tableta de mayor precio:</strong></p>
-        <ul>
-            <li>Marca Samsung Línea Galaxy Tab Modelo S6</li>
-            <li>Memoria: 256 GB</li>
-            <li>Pantalla: 10.5"</li>
-        </ul>
-    </section>
-
-    <section>
         <h2>Opiniones de los usuarios</h2>
+        <p>Las calificaciones promedio de los productos analizados son:</p>
         <table>
             <thead>
                 <tr>
@@ -144,29 +126,32 @@
     </footer>
 
     <script>
-        // gráfico de marcas
+        // Gráfico de marcas
         const ctx = document.getElementById('brandChart').getContext('2d');
-        const brandChart = new Chart(ctx, {
+        new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Samsung', 'Samsung (otros)', 'Artist Unknown', 'F-Tech'],
                 datasets: [{
-                    label: 'Cantidad',
+                    label: 'Cantidad de Tablets',
                     data: [88, 3, 1, 1],
-                    backgroundColor: ['#4CAF50', '#FFC107', '#2196F3', '#FF5722']
+                    backgroundColor: ['#3498db', '#9b59b6', '#1abc9c', '#e74c3c']
                 }]
             },
             options: {
                 responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
                 scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+                    y: { beginAtZero: true }
                 }
             }
         });
     </script>
 </body>
 </html>
+
 
 
