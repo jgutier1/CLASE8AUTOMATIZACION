@@ -44,12 +44,12 @@
 <body>
     <header>
         <h1>Evidencia de Aprendizaje - Optimización</h1>
-        <p>Este documento presenta los resultados y conclusiones del análisis realizado.</p>
+        <p>Este documento presenta los resultados y conclusiones del análisis realizado sobre las tabletas y su optimización en el mercado.</p>
     </header>
 
     <section>
         <h2>Resultados y conclusiones</h2>
-        <p>En los resultados se muestra que tenemos un total de 93 tabletas pero con distintas marcas:</p>
+        <p>En los resultados se muestra que tenemos un total de 93 tabletas, pero con distintas marcas:</p>
         <table>
             <thead>
                 <tr>
@@ -76,13 +76,30 @@
                 </tr>
             </tbody>
         </table>
-    </section>
 
-    <section>
-        <h2>Gráfico de distribución de marcas</h2>
-        <div class="chart-container">
-            <canvas id="brandChart"></canvas>
-        </div>
+        <h3>Rango de precios</h3>
+        <p>El precio de las tabletas varía desde:</p>
+        <ul>
+            <li><strong>Menor precio:</strong> $720.000</li>
+            <li><strong>Mayor precio:</strong> $5,999,999</li>
+        </ul>
+
+        <h3>Características técnicas destacadas</h3>
+        <p><strong>Tableta de menor precio:</strong></p>
+        <ul>
+            <li><strong>Descripción:</strong> Tableta SAMSUNG Galaxy Tab S6 Lite WiFi 10.4" - 64 GB</li>
+            <li><strong>Pantalla:</strong> 10.4 pulgadas con resolución 2000 x 1200 píxeles</li>
+            <li><strong>Batería:</strong> Hasta 14 horas</li>
+            <li><strong>Almacenamiento:</strong> 64 GB expandible con microSD</li>
+        </ul>
+
+        <p><strong>Tableta de mayor precio:</strong></p>
+        <ul>
+            <li><strong>Descripción:</strong> SAMSUNG Galaxy Tab S6 Lite WiFi 10.5" - 256 GB</li>
+            <li><strong>Pantalla:</strong> 10.5 pulgadas con resolución 2000 x 1200 píxeles</li>
+            <li><strong>Batería:</strong> Hasta 14 horas</li>
+            <li><strong>Almacenamiento:</strong> 256 GB expandible hasta 1 TB</li>
+        </ul>
     </section>
 
     <section>
@@ -114,24 +131,33 @@
                 </tr>
                 <tr>
                     <td>Calidad de la cámara</td>
-                    <td>4</td>
+                    <td>4.0</td>
                 </tr>
             </tbody>
         </table>
     </section>
 
+    <section>
+        <h2>Gráficos</h2>
+        <div class="chart-container">
+            <canvas id="brandChart"></canvas>
+        </div>
+    </section>
+
     <footer>
+        <p>Programacion para el analisis de Datos PREICA2402B020101</p>
+        <p>PREICA2402B020101</p>
         <p>Creado por: Juan Carlos Gutierrez</p>
-        <p>Fecha: 2024</p>
+        <p>Fecha: 7 diciembre 2024</p>
     </footer>
 
     <script>
-        // Gráfico de marcas
+        // Gráfico de distribución de marcas
         const ctx = document.getElementById('brandChart').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Samsung', 'Samsung (otros)', 'Artist Unknown', 'F-Tech'],
+                labels: ['Samsung', 'Samsung (otros modelos)', 'Artist Unknown', 'F-Tech'],
                 datasets: [{
                     label: 'Cantidad de Tablets',
                     data: [88, 3, 1, 1],
